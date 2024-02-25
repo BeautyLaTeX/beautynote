@@ -1,0 +1,160 @@
+\documentclass[twoside,openany,12pt]{beautynote} 
+% Input Some Information of the doc
+\doctitle{Introduction to Beautynote Template}
+\docsubtitle{A subtitle}
+\dockeywords{beautynote,introduction}
+\date{\today\vfill\includegraphics[width=0.15\textwidth]{titlepage.png}\\[.1em] \textsc{\large Beautynote}}
+% Hyperref always required second to last.
+\RequirePackage{hyperref}
+\makeatletter
+\hypersetup{%
+    % hidelinks,
+    pdfstartview=Fit,%
+    pdfmenubar=true,%
+    pdftoolbar=true,%
+    bookmarksopen=false,%
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=purple,
+    pdftitle={\@docsubtitle},%
+    pdfauthor={\@author},%
+    pdfsubject={\@doctitle},%
+    pdflang={\languagename},%
+    pdfkeywords={\@dockeywords},%
+    pdfproducer={pdfTeX}}
+\makeatother
+
+% Cleveref as the last one.
+\RequirePackage{cleveref}
+%%%%%%%%%%%%%%%%%
+\author{Ethan Lu}
+\footext{}
+\copyrightpage%
+{Faculty of Pure Mathematics}% Your Faculty
+{XX University}% Your University
+{Press of XX University}% Your Publisher
+{01A75, 00B50}% AMS
+{Guang Zhou}% Your City
+% If you do not want to fill one of the fields, please leave it like this: {}
+\usepackage{microtype}
+\usepackage{appendix}
+\usepackage{mathrsfs}
+\usepackage{bropd}
+\usepackage{bm}
+\usepackage{tabularray,booktabs}
+\usepackage{listings}
+\lstset{
+    basicstyle=\small\ttfamily,	
+        keywordstyle=\color{NavyBlue}, 
+        commentstyle=\color{gray!50!black!50},   	
+        stringstyle=\rmfamily\slshape\color{red}, 	
+    backgroundcolor=\color{gray!5},     
+    frame=leftline,						
+    framerule=0.5pt,rulecolor=\color{gray!80}, 
+    numbers=left,				
+        numberstyle=\footnotesize,	
+        firstnumber=1,
+        stepnumber=1,                  	
+        numbersep=7pt,               	
+    aboveskip=.25em, 			
+    showspaces=false,               	
+    showstringspaces=false,        
+    keepspaces=true, 					
+    showtabs=false,                 	
+    tabsize=2,                     		
+    captionpos=b,                   	
+    flexiblecolumns=true, 			
+    breaklines=true,                	
+    breakatwhitespace=false,        	
+    breakautoindent=true,			
+    breakindent=1em, 			
+    title=\lstname,				
+    escapeinside=``,  		
+    xleftmargin=1em,  xrightmargin=1em,     
+    aboveskip=1ex, belowskip=1ex,
+    framextopmargin=1pt, framexbottommargin=1pt,
+        abovecaptionskip=-2pt,belowcaptionskip=3pt,
+    extendedchars=false, columns=flexible, mathescape=true,
+    texcl=true,
+    fontadjust
+}%
+\begin{document}
+% Titlepage
+\maketitle\clearpage
+%%%%%%%%%%%%%%%% Copyright-Page %%%%%%%%%%%%%%%%%%%%%%%
+\copyrights
+\pagestyle{\auxsettings}
+\makeatletter
+\thispagestyle{copyright}
+\ifdefempty{\@faculty}{}{\noindent{\large\textsc{\@faculty}} \\}
+\ifdefempty{\@university}{}{{\large\textsc{\@university}} \\[1em]}
+\ifdefempty{\@publisher}{}{\textit{Published by:} \@publisher \\}
+\ifthenelse{\boolean{copyright}}{\textit{Copyright by:} \textsc{\docauthor }\\}{} 
+\ifdefempty{\@ams}{}{\textit{AMS Classification (2020):} \@ams.\\}
+\vfill
+\ifdefempty{\@city}{}{\noindent\@city, on \today\\}
+\copyright\,\the\year\, \textsc{The Authors}
+\doclicenseThis
+\cleardoublepage
+\makeatother
+%%%%%%%%%%%%%%%% Copyright-Page %%%%%%%%%%%%%%%%%%%%%%%
+% Toc
+    \tableofcontents
+% Main Contents
+\pagestyle{\defaultsettings}
+\chapter{A short introduction to beautynote template}
+\section{Introduction}
+
+Beautynote is a specially designed to meet the publication of books and the production of latex templates, with elegant chapter styles and unique page styles.
+
+Here are all the things you can change : 
+\begin{table}[!htbp]
+    \centering % 使用 \centering 替代 center 环境
+    \caption{Information-needed}
+    \begin{tabular}{c|c}
+        \toprule
+        \lstinline|\docauthor| & The author of this note\\ \midrule
+        \lstinline|\doctitle| & The title of this note\\ \midrule
+        \lstinline|\docsubtitle| & The subtitle of this note\\ \midrule
+        \lstinline|\docdate| & The date of this note\\ \midrule
+        \lstinline|\dockeywords| & The keywords of this note\\ \midrule % 假设这是正确的宏命令
+        \lstinline|\copyrightpage| & Some useful information of the copyright of this note, just like page 2\\
+        \bottomrule
+    \end{tabular}
+    \label{tb:Information-needed}
+\end{table}
+\textbf{Notation:} If you want to change the picture in title page, you can find it on the 220th line in the file \lstinline{beautynote.cls}.
+\section{Environments}
+We can use some important theorem environments:
+\begin{theorem}[Theorem]\label{thm:example-1}
+    Example of theorem environment.
+\end{theorem}
+\begin{proof}
+    
+\end{proof}
+    
+\begin{lemma}[Lemma]\label{thm:example-2}
+    Example of theorem environment.
+\end{lemma}
+\begin{solution}
+    
+\end{solution}
+    
+\begin{definition}[Definition]\label{thm:example-3}
+    Example of theorem environment.
+\end{definition}
+\begin{proposition}[Proposition]\label{thm:example-4}
+    Example of theorem environment.
+\end{proposition}
+\begin{problem}[Problem]\label{thm:example-5}
+    Example of theorem environment.
+\end{problem}
+\begin{remark}[Remark]
+    Example of theorem environment.
+\end{remark}
+
+% Bibliography
+\clearpage
+\pagestyle{\auxsettings}
+\printbibliography[heading=bibintoc]
+\end{document} 
